@@ -251,6 +251,18 @@ func getChaincodePodObject(
 					},
 					Env: []apiv1.EnvVar{
 						{
+							Name:  "CHAINCODE_ID",
+							Value: chaincodeData.ChaincodeID,
+						},
+						{
+							Name:  "CHAINCODE_SERVER_ADDRESS",
+							Value: "0.0.0.0:9999",
+						},
+						{
+							Name:  "CORE_CHAINCODE_LOGGING_LEVEL",
+							Value: "INFO",
+						},
+						{
 							Name:  "CORE_CHAINCODE_ID_NAME",
 							Value: chaincodeData.ChaincodeID,
 						},
@@ -287,6 +299,11 @@ func getChaincodePodObject(
 							Value: chaincodeData.MspID,
 						},
 					},
+				},
+			},
+			ImagePullSecrets: []apiv1.LocalObjectReference{
+				{
+					Name: "cfg-dr-github",
 				},
 			},
 			RestartPolicy: apiv1.RestartPolicyNever,
