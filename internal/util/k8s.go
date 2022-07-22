@@ -303,7 +303,7 @@ func getChaincodePodObject(
 			},
 			ImagePullSecrets: []apiv1.LocalObjectReference{
 				{
-					Name: "cfg-dr-github",
+					Name: "ghcr-pull-secret",
 				},
 			},
 			RestartPolicy: apiv1.RestartPolicyNever,
